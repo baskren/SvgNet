@@ -15,13 +15,13 @@ namespace SvgNet.SvgTypes {
     /// GDI+ Matrix object.
     /// </summary>
     public class SvgTransform : ICloneable {
-        public SvgTransform() => Matrix = new Matrix();
+        public SvgTransform() => Matrix = new SVG.Gaps.Matrix();
 
         public SvgTransform(string s) => FromString(s);
 
-        public SvgTransform(Matrix m) => Matrix = m;
+        public SvgTransform(SVG.Gaps.Matrix m) => Matrix = m;
 
-        public Matrix Matrix { get; set; }
+        public SVG.Gaps.Matrix Matrix { get; set; }
 
         public object Clone() => new SvgTransform(Matrix.Clone());
 
@@ -30,7 +30,7 @@ namespace SvgNet.SvgTypes {
         /// me wish it was worth using a real parser, but antlr is so unwieldy.
         /// </summary>
         public void FromString(string s) {
-            Matrix = new Matrix();
+            Matrix = new SVG.Gaps.Matrix();
 
             string name, args;
 
@@ -47,7 +47,7 @@ namespace SvgNet.SvgTypes {
 
                     if (name.IndexOf("matrix") != -1) {
                         if (points.Length == 6) {
-                            Matrix = new Matrix(points[0], points[1], points[2], points[3], points[4], points[5]);
+                            Matrix = new SVG.Gaps.Matrix(points[0], points[1], points[2], points[3], points[4], points[5]);
                             return;
                         }
                     } else if (name.IndexOf("translate") != -1) {

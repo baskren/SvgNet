@@ -197,7 +197,7 @@ namespace SvgNet.SvgGdi {
             }
 
             public void EnumerateMetafile(Stream emf, float unitSize, PointF destination, DrawLineDelegate drawLine, FillPolygonDelegate fillPolygon) {
-                _transform = new Matrix();
+                _transform = new SVG.Gaps.Matrix();
                 _drawLine = drawLine;
                 _fillPolygon = fillPolygon;
                 _zero = destination;
@@ -293,7 +293,7 @@ namespace SvgNet.SvgGdi {
             private LineBuffer _lineBuffer;
             private PointF _moveTo;
             private Dictionary<uint, ObjectHandle> _objects;
-            private Matrix _transform;
+            private SVG.Gaps.Matrix _transform;
             private PointF _zero;
 
             private void CommitLine() {
@@ -481,10 +481,10 @@ namespace SvgNet.SvgGdi {
                     var eDy = _br.ReadSingle();
                     var iMode = (EmfTransformMode)_br.ReadInt32();
 
-                    using (var matrix = new Matrix(eM11, eM12, eM21, eM22, eDx, eDy)) {
+                    using (var matrix = new SVG.Gaps.Matrix(eM11, eM12, eM21, eM22, eDx, eDy)) {
                         switch (iMode) {
                             case EmfTransformMode.MWT_IDENTITY:
-                                _transform = new Matrix();
+                                _transform = new SVG.Gaps.Matrix();
                                 break;
 
                             case EmfTransformMode.MWT_LEFTMULTIPLY:

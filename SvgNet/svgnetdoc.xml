@@ -314,14 +314,9 @@
             An interface that contains exactly the same methods as the GDI+ Graphics object.  If your drawing routines draw to an <c>IGraphics</c> interface, then you can supply either
             a <c>GdiGraphics</c> object to render to the screen, or an <see cref="T:SvgNet.SvgGdi.SvgGraphics" /> object to render to an SVG file.
             <para>
-            It's a pity that <c>Graphics</c> is a sealed class.  Otherwise there'd be no need to have this interface or the <see cref="T:SvgNet.SvgGdi.GdiGraphics"/> class; we could simply
+            It's a pity that <c>Graphics</c> is a sealed class.  Otherwise there'd be no need to have this interface or the <see cref="!:GdiGraphics"/> class; we could simply
             derive a class from <c>Graphics</c> to do SVG output.
             </para>
-            </summary>
-        </member>
-        <member name="T:SvgNet.SvgGdi.GdiGraphics">
-            <summary>
-            An IGraphics implementation that simply passes every call through to a GDI+ <c>Graphics</c> object.
             </summary>
         </member>
         <member name="M:SvgNet.SvgGdi.MetafileTools.EmfTools.BinaryReaderExtensions.Skip(System.IO.BinaryReader,System.Int32)">
@@ -1152,12 +1147,12 @@
             This method is implemented and produces a result which is often correct, but it is impossible to guarantee because 'MeasureString' is a fundamentally inapplicable to device independent output like SVG.
             </summary>
         </member>
-        <member name="M:SvgNet.SvgGdi.SvgGraphics.MultiplyTransform(System.Drawing.Drawing2D.Matrix)">
+        <member name="M:SvgNet.SvgGdi.SvgGraphics.MultiplyTransform(SVG.Gaps.Matrix)">
             <summary>
             Implemented
             </summary>
         </member>
-        <member name="M:SvgNet.SvgGdi.SvgGraphics.MultiplyTransform(System.Drawing.Drawing2D.Matrix,System.Drawing.Drawing2D.MatrixOrder)">
+        <member name="M:SvgNet.SvgGdi.SvgGraphics.MultiplyTransform(SVG.Gaps.Matrix,System.Drawing.Drawing2D.MatrixOrder)">
             <summary>
             Implemented, but ignores <c>order</c>
             </summary>

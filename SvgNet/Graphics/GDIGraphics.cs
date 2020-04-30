@@ -12,6 +12,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Text;
 
 namespace SvgNet.SvgGdi {
+    /*
     /// <summary>
     /// An IGraphics implementation that simply passes every call through to a GDI+ <c>Graphics</c> object.
     /// </summary>
@@ -34,7 +35,7 @@ namespace SvgNet.SvgGdi {
         public SmoothingMode SmoothingMode { get => _g.SmoothingMode; set => _g.SmoothingMode = value; }
         public int TextContrast { get => _g.TextContrast; set => _g.TextContrast = value; }
         public TextRenderingHint TextRenderingHint { get => _g.TextRenderingHint; set => _g.TextRenderingHint = value; }
-        public Matrix Transform { get => _g.Transform; set => _g.Transform = value; }
+        public SVG.Gaps.Matrix Transform { get => _g.Transform; set => _g.Transform = value; }
         public RectangleF VisibleClipBounds => _g.VisibleClipBounds;
 
         public void AddMetafileComment(byte[] data) => _g.AddMetafileComment(data);
@@ -305,9 +306,9 @@ namespace SvgNet.SvgGdi {
 
         public SizeF MeasureString(string text, Font font, int width, StringFormat format) => _g.MeasureString(text, font, width, format);
 
-        public void MultiplyTransform(Matrix matrix) => _g.MultiplyTransform(matrix);
+        public void MultiplyTransform(SVG.Gaps.Matrix matrix) => _g.MultiplyTransform(matrix);
 
-        public void MultiplyTransform(Matrix matrix, MatrixOrder order) => _g.MultiplyTransform(matrix, order);
+        public void MultiplyTransform(SVG.Gaps.Matrix matrix, MatrixOrder order) => _g.MultiplyTransform(matrix, order);
 
         public void ResetClip() => _g.ResetClip();
 
@@ -357,4 +358,5 @@ namespace SvgNet.SvgGdi {
 
         private readonly Graphics _g;
     }
+    */
 }

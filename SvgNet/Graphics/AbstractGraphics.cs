@@ -56,7 +56,7 @@ namespace SvgNet.SvgGdi {
 
         TextRenderingHint TextRenderingHint { get; set; }
 
-        Matrix Transform { get; set; }
+        SVG.Gaps.Matrix Transform { get; set; }
 
         RectangleF VisibleClipBounds { get; }
 
@@ -326,9 +326,9 @@ namespace SvgNet.SvgGdi {
 
         SizeF MeasureString(string text, Font font, int width, StringFormat format);
 
-        void MultiplyTransform(Matrix matrix);
+        void MultiplyTransform(SVG.Gaps.Matrix matrix);
 
-        void MultiplyTransform(Matrix matrix, MatrixOrder order);
+        void MultiplyTransform(SVG.Gaps.Matrix matrix, MatrixOrder order);
 
         void ResetClip();
 

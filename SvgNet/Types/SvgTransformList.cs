@@ -20,7 +20,7 @@ namespace SvgNet.SvgTypes {
 
         public SvgTransformList(string s) => FromString(s);
 
-        public SvgTransformList(Matrix m) {
+        public SvgTransformList(SVG.Gaps.Matrix m) {
             var tr = new SvgTransform(m);
             _t.Add(tr);
         }
@@ -36,13 +36,13 @@ namespace SvgNet.SvgTypes {
             return new SvgTransformList(s);
         }
 
-        public static implicit operator SvgTransformList(Matrix m) {
+        public static implicit operator SvgTransformList(SVG.Gaps.Matrix m) {
             return new SvgTransformList(m);
         }
 
         public void Add(string trans) => _t.Add(new SvgTransform(trans));
 
-        public void Add(Matrix m) => _t.Add(new SvgTransform(m));
+        public void Add(SVG.Gaps.Matrix m) => _t.Add(new SvgTransform(m));
 
         public object Clone() {
             //use to/from string as a shortcut

@@ -175,7 +175,7 @@ namespace SvgNet.SvgGdi {
             }
         }
 
-        public Matrix Transform {
+        public SVG.Gaps.Matrix Transform {
             get => _transforms.Result.Clone();
 
             set => _transforms.Top = value;
@@ -1257,12 +1257,12 @@ namespace SvgNet.SvgGdi {
         /// <summary>
         /// Implemented
         /// </summary>
-        public void MultiplyTransform(Matrix matrix) => _transforms.Top.Multiply(matrix);
+        public void MultiplyTransform(SVG.Gaps.Matrix matrix) => _transforms.Top.Multiply(matrix);
 
         /// <summary>
         /// Implemented, but ignores <c>order</c>
         /// </summary>
-        public void MultiplyTransform(Matrix matrix, MatrixOrder order) => _transforms.Top.Multiply(matrix, order);
+        public void MultiplyTransform(SVG.Gaps.Matrix matrix, MatrixOrder order) => _transforms.Top.Multiply(matrix, order);
 
         /// <summary>
         /// Implemented.
@@ -1986,9 +1986,9 @@ namespace SvgNet.SvgGdi {
             anchor.Style.Set("fill", new SvgColor(col));
             anchor.Style.Set("stroke", "none");
 
-            var rotation = new Matrix();
+            var rotation = new SVG.Gaps.Matrix();
             rotation.Rotate((angle / (float)Math.PI) * 180);
-            var translation = new Matrix();
+            var translation = new SVG.Gaps.Matrix();
             translation.Translate(pt.X, pt.Y);
 
             anchor.Transform = new SvgTransformList(_transforms.Result.Clone());
@@ -2305,14 +2305,14 @@ namespace SvgNet.SvgGdi {
                 Push();
             }
 
-            public Matrix Result {
+            public SVG.Gaps.Matrix Result {
                 get {
                     if (_result != null)
                         return _result;
 
-                    _result = new Matrix();
+                    _result = new SVG.Gaps.Matrix();
 
-                    foreach (Matrix mat in _mx) {
+                    foreach (SVG.Gaps.Matrix mat in _mx) {
                         if (!mat.IsIdentity)
                             _result.Multiply(mat);
                     }
@@ -2321,13 +2321,13 @@ namespace SvgNet.SvgGdi {
                 }
             }
 
-            public Matrix Top {
+            public SVG.Gaps.Matrix Top {
                 get {
                     //because we cannot return a const, we have to reset result
                     //even though the caller might not even want to change the matrix.  This a typical
                     //problem with weaker languages that don't have const.
                     _result = null;
-                    return (Matrix)_mx[_mx.Count - 1];
+                    return (SVG.Gaps.Matrix)_mx[_mx.Count - 1];
                 }
 
                 set {
@@ -2349,10 +2349,10 @@ namespace SvgNet.SvgGdi {
                 _result = null;
             }
 
-            public void Push() => _mx.Add(new Matrix());
+            public void Push() => _mx.Add(new SVG.Gaps.Matrix());
 
             private readonly ArrayList _mx;
-            private Matrix _result;
+            private SVG.Gaps.Matrix _result;
         }
     }
 }
